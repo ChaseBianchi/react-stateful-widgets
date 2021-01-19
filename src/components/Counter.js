@@ -50,22 +50,21 @@ import React, {useState} from 'react'; /* STEP 0 */
 
 export default function Counter() {
   const [count, setCount] = useState(0)
-  const [isEven, setIsEven] = useState(true)
-
+  // const isEven = ()=>{if(count%2===0){return true}else{return false}}
   const increment = () => {
-    /* STEP 4 */
+    setCount(count + 1)
   };
   const decrement = () => {
-    /* STEP 5 */
+    setCount(count - 1)
   };
   const reset = () => {
-    /* STEP 6 */
+    setCount(0)
   };
-
+  const isEven = ()=>{if(count%2===0){return true}else{return false}}
   const style = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: `${isEven ? 'royalblue' : 'crimson'}`, /* STEP 2 */
+    color: count%2==0 ? 'royalblue' : 'crimson', /* STEP 2 */
   };
 
   return (
@@ -75,9 +74,9 @@ export default function Counter() {
         Number {count} is {isEven ? 'Even' : 'Odd'}
       </div>
       <div>
-        <button id='increment' onClick={increment}>Increment</button>
-        <button id='decrement' onClick={decrement}>Decrement</button>
-        <button id='resetCount' onClick={reset}>Reset</button>
+        <button id='increment' onClick={()=>increment()}>Increment</button>
+        <button id='decrement' onClick={()=>decrement()}>Decrement</button>
+        <button id='resetCount' onClick={()=>reset()}>Reset</button>
       </div>
     </div>
   );
